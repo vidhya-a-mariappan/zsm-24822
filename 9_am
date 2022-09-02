@@ -1,0 +1,64 @@
+import java.util.*;
+public class am 
+{   
+    private static int[] mergewithoutduplicate(int[] arr1, int[] arr2)
+    {
+     	//Merging of two arrays
+        int[] ma=new int[arr1.length+arr2.length];       
+        int i=0,j=0,k=0;
+        //Inserting all elements of arr1 and arr2 into ma
+        while (i<arr1.length)
+        {
+            ma[k]=arr1[i];
+            k++;
+            i++;
+        }
+        while (j<arr2.length)
+        {
+            ma[k]=arr2[j];
+            k++;
+            j++;
+        }
+        //Removing duplicates from merged array using hashset
+        Set<Integer> wnd=new HashSet<>();
+        //Adding all elements of mergedArray into hashset
+        for (int m=0;m<ma.length;m++) 
+     	   wnd.add(ma[m]);       
+        //Sorting and moving unique elements into array using iterator
+        Iterator<Integer> it=wnd.iterator();
+        int[] mawnd = new int[wnd.size()];
+        int n = 0;
+        while (it.hasNext()) 
+        {
+            mawnd[n]=it.next();
+            n++;
+        }
+        Arrays.sort(mawnd);
+       	return mawnd;
+  } 
+public static void main(String[] args)
+    {
+        	//Getting array length from user
+		System.out.println("Enter the length of 2 arrays");
+		Scanner s=new Scanner(System.in);
+	    	int n1=s.nextInt();
+		int n2=s.nextInt();
+	    	int[] arr1=new int[n1];
+		int[] arr2=new int[n2];
+	    	//Getting elements of both the array from user
+		System.out.println("Enter "+n1+" elements of an array");
+		//getting elements of first array
+	    	for(int i=0;i<n1;i++)
+	        arr1[i]=s.nextInt();
+		System.out.println("Enter "+n2+" elements of an array");
+		//getting elements of second array
+	    	for(int i=0;i<n2;i++)
+	        arr2[i]=s.nextInt();
+		int[] ma = mergewithoutduplicate(arr1,arr2);
+        	System.out.println("First Array : "+Arrays.toString(arr1));
+               	System.out.println("Second Array: "+Arrays.toString(arr2));
+               	System.out.println("Sorted Merged Array With No Duplicates : ");
+               	System.out.println(Arrays.toString(ma));
+    }
+}
+	
